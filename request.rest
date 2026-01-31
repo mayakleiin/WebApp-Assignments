@@ -1,5 +1,5 @@
 @baseUrl=http://localhost:3000
-@postId = 697e5ffd77892479727a54f4
+@postId = 697e6814458c57a687f99d2c
 @commentId = 
 
 ########## POSTS Requests ##########
@@ -31,4 +31,16 @@ Content-Type: application/json
   "title": "Diamonds",
   "owner": "Rihanna",
   "content": "Shine bright like a diamond"
+}
+
+########## COMMENTS Requests ##########
+
+### Add a new comment
+POST {{baseUrl}}/comments
+Content-Type: application/json
+
+{
+  "post": "{{postId}}",
+  "content": "This is a comment",
+  "sender": "Beyonce"
 }

@@ -11,7 +11,10 @@ db.once("open", () => console.log("Connected to Database"));
 app.use(express.json());
 
 const postsRoute = require("./routes/postsRoute");
+const commentsRoute = require("./routes/commentsRoute");
+
 app.use("/posts", postsRoute);
+app.use("/comments", commentsRoute);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
