@@ -1,0 +1,16 @@
+@baseUrl=http://localhost:3000
+@postId = 
+@commentId =
+
+########## POSTS Requests ##########
+
+### Add a new post
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+    "title": "My First Post",
+    "content": "This is the content of my first post.",
+    "sender": "user123"
+}
+
