@@ -53,3 +53,14 @@ GET {{baseUrl}}/comments/{{commentId}}
 
 ### Get comments for a specific post
 GET {{baseUrl}}/comments/post/{{postId}}
+
+### Update a comment
+PUT {{baseUrl}}/comments/{{commentId}}
+Content-Type: application/json
+
+{
+  "content": "Updated comment content"
+}
+
+### Delete a comment
+DELETE {{baseUrl}}/comments/{{commentId}}
