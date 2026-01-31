@@ -1,6 +1,6 @@
 @baseUrl=http://localhost:3000
-@postId = 
-@commentId =
+@postId = 697e5ffd77892479727a54f4
+@commentId = 
 
 ########## POSTS Requests ##########
 
@@ -20,3 +20,15 @@ GET {{baseUrl}}/posts
 ### Get All Posts by Sender
 GET {{baseUrl}}/posts?sender=LadyGaga
 
+### Get a Post by ID
+GET {{baseUrl}}/posts/{{postId}}
+
+### Update a Post
+PUT {{baseUrl}}/posts/{{postId}}
+Content-Type: application/json
+
+{
+  "title": "Diamonds",
+  "owner": "Rihanna",
+  "content": "Shine bright like a diamond"
+}
