@@ -1,11 +1,11 @@
 @baseUrl=http://localhost:3000
-@postId = 697e6814458c57a687f99d2c
-@commentId = 697e690835fa3ce54c3e7371
+@postId = 697e62b7db429a3156fb8aae
+@commentId = 697e71230c45be17682e792f
 
 ########## POSTS Requests ##########
 
 ### Add a new post
-POST {{baseUrl}}/posts
+POST {{baseUrl}}/post
 Content-Type: application/json
 
 {
@@ -15,22 +15,22 @@ Content-Type: application/json
 }
 
 ### Get All Posts 
-GET {{baseUrl}}/posts
+GET {{baseUrl}}/post
 
 ### Get All Posts by Sender
-GET {{baseUrl}}/posts?sender=LadyGaga
+GET {{baseUrl}}/post?sender=LadyGaga
 
 ### Get a Post by ID
-GET {{baseUrl}}/posts/{{postId}}
+GET {{baseUrl}}/post/{{postId}}
 
 ### Update a Post
-PUT {{baseUrl}}/posts/{{postId}}
+PUT {{baseUrl}}/post/{{postId}}
 Content-Type: application/json
 
 {
   "title": "Diamonds",
-  "owner": "Rihanna",
-  "content": "Shine bright like a diamond"
+  "content": "Shine bright like a diamond",
+  "sender": "Rihanna" 
 }
 
 ########## COMMENTS Requests ##########
@@ -53,6 +53,9 @@ GET {{baseUrl}}/comments/{{commentId}}
 
 ### Get comments for a specific post
 GET {{baseUrl}}/comments/post/{{postId}}
+
+### Get comments for post (assignment style)
+GET {{baseUrl}}/post/{{postId}}/comments
 
 ### Update a comment
 PUT {{baseUrl}}/comments/{{commentId}}
