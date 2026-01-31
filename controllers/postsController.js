@@ -11,6 +11,23 @@ const createPost = async (req, res) => {
   }
 };
 
+// Get All Posts + Get Posts by Sender
+const getAllPosts = async (req, res) => {
+  const filter = req.query.sender; // Get Posts by Sender (as required)
+  try {
+    if (filter) {
+      const posts = await PostModel.find({ sender: filter });
+      return res.status(200).send(posts);
+    }
+
+    const posts = await PostModel.find();
+    return res.status(200).send(posts);
+  } catch (error) {
+    res.status(400).send(error.message);
+  }
+};
+
 module.exports = {
   createPost,
+  getAllPosts,
 };

@@ -9,8 +9,14 @@ POST {{baseUrl}}/posts
 Content-Type: application/json
 
 {
-    "title": "My First Post",
-    "content": "This is the content of my first post.",
-    "sender": "user123"
+      "title": "Bad Romance",
+      "content": "Caught in a bad romance",
+      "sender": "LadyGaga"
 }
+
+### Get All Posts 
+GET {{baseUrl}}/posts
+
+### Get All Posts by Sender
+GET {{baseUrl}}/posts?sender=LadyGaga
 
