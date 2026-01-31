@@ -1,63 +1,12 @@
-import { Request, Response } from "express";
-import PostModel from "../models/postsModel";
+import PostModel, { IPost } from "../models/postsModel";
+import createController from "./baseController";
 
-// Create a new post
-export const createPost = async (req: Request, res: Response) => {
-  try {
-    const newPost = await PostModel.create(req.body);
-    return res.status(201).json(newPost);
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Unknown error";
-    return res.status(400).json({ message });
-  }
-};
+const postsController = createController<IPost>(PostModel);
 
-// Get All Posts + Get Posts by Sender
-export const getAllPosts = async (req: Request, res: Response) => {
-  const filter = req.query.sender as string | undefined;
+export const create = postsController.create.bind(postsController);
+export const getAll = postsController.getAll.bind(postsController);
+export const getById = postsController.getById.bind(postsController);
+export const update = postsController.update.bind(postsController);
+export const deletePost = postsController.delete.bind(postsController);
 
-  try {
-    if (filter) {
-      const posts = await PostModel.find({ sender: filter });
-      return res.status(200).json(posts);
-    }
-
-    const posts = await PostModel.find();
-    return res.status(200).json(posts);
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Unknown error";
-    return res.status(400).json({ message });
-  }
-};
-
-// Get a Post by ID
-export const getPostById = async (req: Request, res: Response) => {
-  const postId = req.params.post_id;
-
-  try {
-    const post = await PostModel.findById(postId);
-    if (!post) return res.status(404).json({ message: "Post not found" });
-    return res.status(200).json(post);
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Unknown error";
-    return res.status(400).json({ message });
-  }
-};
-
-// Update a Post
-export const updatePost = async (req: Request, res: Response) => {
-  const postId = req.params.post_id;
-
-  try {
-    const post = await PostModel.findByIdAndUpdate(postId, req.body, {
-      new: true,
-      runValidators: true,
-    });
-
-    if (!post) return res.status(404).json({ message: "Post not found" });
-    return res.status(200).json(post);
-  } catch (err: unknown) {
-    const message = err instanceof Error ? err.message : "Unknown error";
-    return res.status(400).json({ message });
-  }
-};
+export default postsController;
