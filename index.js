@@ -13,7 +13,7 @@ app.use(express.json());
 const postsRoute = require("./routes/postsRoute");
 const commentsRoute = require("./routes/commentsRoute");
 
-app.use("/posts", postsRoute);
+app.use("/post", postsRoute);
 app.use("/comments", commentsRoute);
 
 app.listen(port, () => {
