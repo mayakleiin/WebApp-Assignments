@@ -5,11 +5,12 @@ import { Request, Response } from "express";
 const commentsController = createController<IComment>(commentModel);
 
 export const getCommentsByPost = async (req: Request, res: Response) => {
-  const postId = req.params.post_id;
+  const postId = req.params.id;
+
   try {
-    const comments = await commentModel.find({ post: postId });
+    const comments = await commentModel.find({ postId });
     res.status(200).send(comments);
-  } catch (error) {
+  } catch (error: any) {
     res
       .status(400)
       .send({ error: "Failed to fetch comments", details: error.message });

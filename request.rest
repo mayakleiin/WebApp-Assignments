@@ -40,7 +40,7 @@ POST {{baseUrl}}/comments
 Content-Type: application/json
 
 {
-  "post": "{{postId}}",
+  "postId": "{{postId}}",
   "content": "This is a comment",
   "sender": "Beyonce"
 }
