@@ -1,11 +1,19 @@
 {
-  "name": "webapp",
+  "name": "webclass-assignments",
   "version": "1.0.0",
-  "description": "",
+  "description": "Web Class Assignments",
+  "homepage": "https://github.com/mayakleiin/WebClass-Assignments#readme",
+  "bugs": {
+    "url": "https://github.com/mayakleiin/WebClass-Assignments/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mayakleiin/WebClass-Assignments.git"
+  },
   "license": "ISC",
-  "author": "Maya Klein and Linoy Eli",
+  "author": "Maya Klein, Noa Aharon",
   "type": "commonjs",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "tsc && node ./dist/src/app.js",
     "dev": "nodemon ./src/app.ts",
@@ -23,6 +31,7 @@
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
+    "mongoos": "^0.0.1-security",
     "mongoose": "^8.8.2"
   },
   "devDependencies": {

@@ -2,9 +2,9 @@ import express, { Express } from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
-import postRoutes from "./routes/postsRoute";
-import commentsRoutes from "./routes/commentsRoute";
-import authRoutes from "./routes/authRoute";
+import postRoutes from "./routes/posts_route";
+import commentsRoutes from "./routes/comments_route";
+import authRoutes from "./routes/auth_route";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 dotenv.config();
@@ -20,7 +20,7 @@ const options = {
   definition: {
     openapi: "3.0.0",
     info: {
-      title: "Web Dev 2026 REST API",
+      title: "Web Dev 2025 REST API",
       version: "1.0.0",
       description: "REST server including authentication using JWT",
     },
