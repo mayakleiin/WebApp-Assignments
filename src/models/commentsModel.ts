@@ -2,16 +2,16 @@ import mongoose from "mongoose";
 
 export interface IComment {
   postId: string;
-  comment: string;
+  content: string;
   sender: string;
 }
 
 const commentSchema = new mongoose.Schema<IComment>({
-   postId: {
+  postId: {
     type: String,
     required: true,
   },
-  comment: {
+  content: {
     type: String,
     required: true,
   },
