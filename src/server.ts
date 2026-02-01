@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import postRoutes from "./routes/postsRoute";
 import commentsRoutes from "./routes/commentsRoute";
+import authRoutes from "./routes/authRoute";
 
 dotenv.config();
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/post", postRoutes);
 app.use("/comments", commentsRoutes);
+app.use("/auth", authRoutes);
 
 const initApp = async () => {
   return new Promise<Express>((resolve, reject) => {
