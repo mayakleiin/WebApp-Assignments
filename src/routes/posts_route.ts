@@ -1,7 +1,7 @@
 import express from "express";
 const router = express.Router();
-import postsController from "../controllers/postsControllers";
-import { authMiddleware } from "../controllers/authController";
+import postsController from "../controllers/posts_controller";
+import { authMiddleware } from "../controllers/auth_controller";
 
 /**
  * @swagger
