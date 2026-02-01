@@ -1,69 +1,71 @@
 @baseUrl=http://localhost:3000
-@postId = 697e62b7db429a3156fb8aae
-@commentId = 697e71230c45be17682e792f
 
-########## POSTS Requests ##########
-
-### Add a new post
-POST {{baseUrl}}/post
+### 1) Register
+POST {{baseUrl}}/auth/register
 Content-Type: application/json
 
 {
-      "title": "Bad Romance",
-      "content": "Caught in a bad romance",
-      "sender": "LadyGaga"
+  "username": "maya",
+  "email": "maya@test.com",
+  "password": "123456"
 }
 
-### Get All Posts 
+### 2) Login  (copy accessToken + refreshToken from response)
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "maya@test.com",
+  "password": "123456"
+}
+
+### ===== Paste tokens here after login =====
+@accessToken = PASTE_ACCESS_TOKEN_HERE
+@refreshToken = PASTE_REFRESH_TOKEN_HERE
+
+### 3) Create Post (protected)
+POST {{baseUrl}}/post
+Content-Type: application/json
+Authorization: Bearer {{accessToken}}
+
+{
+  "title": "Bad Romance",
+  "content": "Caught in a bad romance"
+}
+
+### 4) Get All Posts
 GET {{baseUrl}}/post
 
-### Get All Posts by Sender
-GET {{baseUrl}}/post?sender=LadyGaga
-
-### Get a Post by ID
+### 5) Get Post by ID (paste id)
+@postId = PASTE_POST_ID_HERE
 GET {{baseUrl}}/post/{{postId}}
 
-### Update a Post
+### 6) Update Post (protected)
 PUT {{baseUrl}}/post/{{postId}}
 Content-Type: application/json
+Authorization: Bearer {{accessToken}}
 
 {
   "title": "Diamonds",
-  "content": "Shine bright like a diamond",
-  "sender": "Rihanna" 
+  "content": "Shine bright"
 }
 
-########## COMMENTS Requests ##########
+### 7) Delete Post (protected)
+DELETE {{baseUrl}}/post/{{postId}}
+Authorization: Bearer {{accessToken}}
 
-### Add a new comment
-POST {{baseUrl}}/comments
+### 8) Refresh tokens (use refreshToken)
+POST {{baseUrl}}/auth/refresh
 Content-Type: application/json
 
 {
-  "postId": "{{postId}}",
-  "content": "This is a comment",
-  "sender": "Beyonce"
+  "refreshToken": "{{refreshToken}}"
 }
 
-### Get all comments
-GET {{baseUrl}}/comments
-
-### Get comment by ID
-GET {{baseUrl}}/comments/{{commentId}}
-
-### Get comments for a specific post
-GET {{baseUrl}}/comments/post/{{postId}}
-
-### Get comments for post (assignment style)
-GET {{baseUrl}}/post/{{postId}}/comments
-
-### Update a comment
-PUT {{baseUrl}}/comments/{{commentId}}
+### 9) Logout (invalidate refresh token)
+POST {{baseUrl}}/auth/logout
 Content-Type: application/json
 
 {
-  "content": "Updated comment content"
+  "refreshToken": "{{refreshToken}}"
 }
-
-### Delete a comment
-DELETE {{baseUrl}}/comments/{{commentId}}
