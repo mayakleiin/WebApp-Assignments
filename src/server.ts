@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import postRoutes from "./routes/postsRoute";
 import commentsRoutes from "./routes/commentsRoute";
 import authRoutes from "./routes/authRoute";
+import usersRoutes from "./routes/usersRoute";  
 
 dotenv.config();
 const app = express();
@@ -13,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/post", postRoutes);
 app.use("/comments", commentsRoutes);
+app.use("/users", usersRoutes);
 app.use("/auth", authRoutes);
 
 const initApp = async () => {
