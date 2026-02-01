@@ -1,0 +1,67 @@
+@baseUrl = http://localhost:3000
+@postId = 6790f6d0a5412283e50aee19
+@commentId = 6790f455c80f3fed27504c84
+
+############ COMMENTS Requests: ############
+
+### Add a new comment
+POST {{baseUrl}}/comments
+Content-Type: application/json
+
+{
+  "post": "{{postId}}",
+  "content": "This is a comment",
+  "sender": "beyonce"
+}
+
+### Get a comment by ID
+GET {{baseUrl}}/comments/{{commentId}}
+
+### Get all comments
+GET {{baseUrl}}/comments/all
+
+### Update a comment
+PUT {{baseUrl}}/comments/{{commentId}}
+Content-Type: application/json
+
+{
+  "content": "Updated comment content"
+}
+
+### Delete a comment
+DELETE {{baseUrl}}/comments/{{commentId}}
+
+############ POSTS Requests: ############
+
+### Add a New Post
+POST {{baseUrl}}/posts
+Content-Type: application/json
+
+{
+  "title": "Bad Romance",
+  "owner": "LadyGaga",
+  "content": "Caught in a bad romance"
+}
+
+
+### Get All Posts (All posts)
+GET {{baseUrl}}/posts
+
+### Get All Posts (Filtered by Owner)
+GET {{baseUrl}}/posts?owner=LadyGaga
+
+### Get a Post by ID
+GET {{baseUrl}}/posts/{{postId}}
+
+### Update a Post
+PUT {{baseUrl}}/posts/{{postId}}
+Content-Type: application/json
+
+{
+  "title": "Diamonds",
+  "owner": "Rihanna",
+  "content": "Shine bright like a diamond"
+}
+
+### Delete a Post
+DELETE {{baseUrl}}/posts/{{postId}}

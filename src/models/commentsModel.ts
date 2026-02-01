@@ -1,21 +1,21 @@
 import mongoose from "mongoose";
 
 export interface IComment {
+  comment: string;
+  owner: string;
   postId: string;
-  content: string;
-  sender: string;
 }
 
 const commentSchema = new mongoose.Schema<IComment>({
+  comment: {
+    type: String,
+    required: true,
+  },
+  owner: {
+    type: String,
+    required: true,
+  },
   postId: {
-    type: String,
-    required: true,
-  },
-  content: {
-    type: String,
-    required: true,
-  },
-  sender: {
     type: String,
     required: true,
   },

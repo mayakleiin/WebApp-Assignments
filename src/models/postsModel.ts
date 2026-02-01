@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 export interface IPost {
   title: string;
   content: string;
-  sender: string;
+  owner: string;
 }
 
 const postSchema = new Schema<IPost>({
@@ -13,7 +13,7 @@ const postSchema = new Schema<IPost>({
     required: true,
   },
   content: String,
-  sender: {
+  owner: {
     type: String,
     required: true,
   },
